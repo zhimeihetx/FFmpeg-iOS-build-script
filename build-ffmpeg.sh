@@ -13,8 +13,33 @@ THIN=`pwd`/"thin"
 
 #FDK_AAC=`pwd`/fdk-aac/fdk-aac-ios
 
-CONFIGURE_FLAGS="--enable-cross-compile --disable-debug --disable-programs \
-                 --disable-doc --enable-pic"
+#CONFIGURE_FLAGS="--enable-cross-compile --disable-debug --disable-programs \
+#                 --disable-doc --enable-pic"
+#clip only for aac and h264 decode
+CONFIGURE_FLAGS="--enable-cross-compile \
+		 --enable-gpl \
+		 --enable-pic \
+		 --disable-debug \
+		 --disable-programs \
+		 --disable-doc \
+                 --disable-decoders \
+                 --disable-muxers \
+                 --disable-demuxers \
+                 --disable-devices \
+                 --disable-network \
+                 --disable-parsers \
+                 --disable-encoders \
+                 --disable-protocols \
+                 --disable-filters \
+                 --disable-avdevice \
+                 --disable-postproc \
+                 --disable-avfilter \
+		 --disable-avformat \
+		 --disable-swresample \
+                 --disable-bsfs \
+		 --enable-small \
+                 --enable-decoder=aac \
+                 --enable-decoder=h264 " 
 
 if [ "$X264" ]
 then
@@ -34,7 +59,7 @@ ARCHS="arm64 armv7 x86_64 i386"
 COMPILE="y"
 LIPO="y"
 
-DEPLOYMENT_TARGET="6.0"
+DEPLOYMENT_TARGET="7.0"
 
 if [ "$*" ]
 then
